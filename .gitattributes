@@ -1,0 +1,11 @@
+# ─── DAS PROPRIEDADES DO MANUSCRIPTO (git attributes) ───
+# Escholio: fixa-se a natureza textual dos ficheiros e a fórma das suas
+# quebras de linha, para que nenhum copista as corrompa.
+
+* text=auto
+
+# do proprio registro das omissões
+.gitignore text
+
+.tmux.conf eol=lf
+.tmux.conf.local eol=lf
