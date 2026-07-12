@@ -1,12 +1,24 @@
-# ╔═══════════════════════════════════════════════════════════════╗
-# ║⚑ ⩜ RADICAL TMUX — v1.0                                        ║
-# ╚═══════════════════════════════════════════════════════════════╝
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+#        TERCEIRO TRACTADO — DA ORNAMENTAÇÃO CHROMATICA DO ENGENHO tmux
+#                    (o thema "RADICAL", em tom cyberpunk distopico)
+#
+#   Complemento ao Tractado do engenho multiplexador: onde aquelle fixou as
+#   ligaduras, este dispõe as côres, os separadores e os brazões do estrado
+#   (status bar). Composto no anno da graça de MDCCCXCVIII pela penna do
+#   Prof. Dr. BRAGA USS, segundo o methodo euclidiano — dos axiomata
+#   chromaticos ás proposições dos estrados esquerdo e direito.
+#
+#   ADVERTENCIA: as grandezas "tmux_conf_theme_*" são as variaveis d'onde o
+#   motor deriva toda a apparencia; que o copista lhes preserve os valores,
+#   emendando tão somente esta prosa.
+#
+#                                  — Prof. Dr. BRAGA USS, Cathedratico
+# ═══════════════════════════════════════════════════════════════════════════════
 
-# ============================================
-#  Cyberpunk Dystopian Theme for Oh My Tmux
-# ============================================
+# ─── PREAMBULO: DO THEMA DISTOPICO ERIGIDO SOBRE O "Oh My Tmux" ───
 
-# Ativa status bar no topo
+# POSTULADO. Erga-se o estrado ao alto da tela.
 set -g status-position top
 set -g default-terminal "tmux-256color"
 set -as terminal-overrides ',xterm-256color:RGB'
@@ -15,60 +27,60 @@ set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
 set -g status-position top
 
-# -- window tab style ----------------------------------------------------------
+# ─── DO ESTYLO DAS ABAS DAS JANELLAS ───
 tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
 tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_2"
 tmux_conf_theme_window_status_attr="none"
-# Formato da aba inativa (com a setinha fina)
+# fórma da aba inactiva (com a setta subtil)
 tmux_conf_theme_window_status_format=" #I #W "
 
 tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
 tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_4"
 tmux_conf_theme_window_status_current_attr="bold"
-# Formato da aba ativa (Aqui a mágica acontece)
+# fórma da aba activa (aqui se opera o prodigio)
 tmux_conf_theme_window_status_current_format=" #I #W "
 
-# -- Manter os atalhos originais do TMUX? (vanilla tmux)
+# PROPOSIÇÃO. Conservar as ligaduras nativas do tmux? (o tmux em estado puro)
 tmux_conf_preserve_stock_bindings=false
 
-# -- Controla se o tmux vai te perguntar o nome da sessão ao criar uma nova 
+# PROPOSIÇÃO. Deve o tmux inquirir o nome ao fundar-se nova sessão?
 tmux_conf_new_session_prompt=false
 tmux_conf_new_session_retain_current_path=true
 
-# -- windows & pane creation ---------------------------------------------------
+# ─── DA GENESE DE JANELLAS E PAINEIS ───
 tmux_conf_new_window_retain_current_path=true
 tmux_conf_new_window_reconnect_ssh=false
 tmux_conf_new_pane_retain_current_path=true
 tmux_conf_new_pane_reconnect_ssh=false
 
-# -- display -------------------------------------------------------------------
+# ─── DA EXHIBIÇÃO ───
 tmux_conf_24b_colour=auto
 
-# -- CYBERPUNK DISTÓPICO (NOVA PALETA) -----------------------------------------
+# ─── DOS AXIOMATA CHROMATICOS (A NOVA PALETA CYBERPUNK DISTOPICA) ───
 tmux_conf_theme=enabled
-tmux_conf_theme_colour_1="#08090a"    # Fundo Principal (Deep Void)
-tmux_conf_theme_colour_2="#1a103d"    # Fundo Secundário (Midnight)
-tmux_conf_theme_colour_3="#00f3ff"    # Ciano (Texto Principal)
-tmux_conf_theme_colour_4="#ff00ff"    # Rosa Neon (Aba Ativa)
-tmux_conf_theme_colour_5="#fff000"    # Amarelo (Destaques)
-tmux_conf_theme_colour_6="#08090a"    # Fundo Status Left
-tmux_conf_theme_colour_7="#00f3ff"    # Texto Status Left
-tmux_conf_theme_colour_8="#08090a"    # Fundo Extra
-tmux_conf_theme_colour_9="#fff000"    # Separador Amarelo
-tmux_conf_theme_colour_10="#ff00ff"   # Separador Rosa
-tmux_conf_theme_colour_11="#00ff41"   # Verde Ácido (Uptime/OK)
-tmux_conf_theme_colour_12="#00f3ff"   # Texto Status Right
-tmux_conf_theme_colour_13="#e0e0ff"   # Cinza Claro (Texto)
-tmux_conf_theme_colour_14="#08090a"   # Fundo Final Right
-tmux_conf_theme_colour_15="#08090a"   # Fundo Status Base
-tmux_conf_theme_colour_16="#ff003c"   # Vermelho Alerta
-tmux_conf_theme_colour_17="#00f3ff"   # Ciano Final
+tmux_conf_theme_colour_1="#08090a"    # fundo primordial (o Vacuo Profundo)
+tmux_conf_theme_colour_2="#1a103d"    # fundo segundo (a Meia-Noite)
+tmux_conf_theme_colour_3="#00f3ff"    # o cyano (texto capital)
+tmux_conf_theme_colour_4="#ff00ff"    # rosa de neon (aba vigente)
+tmux_conf_theme_colour_5="#fff000"    # o amarello (dos realces)
+tmux_conf_theme_colour_6="#08090a"    # fundo do estrado esquerdo
+tmux_conf_theme_colour_7="#00f3ff"    # texto do estrado esquerdo
+tmux_conf_theme_colour_8="#08090a"    # fundo supplementar
+tmux_conf_theme_colour_9="#fff000"    # separador amarello
+tmux_conf_theme_colour_10="#ff00ff"   # separador rosado
+tmux_conf_theme_colour_11="#00ff41"   # verde acido (do tempo de vida / bom estado)
+tmux_conf_theme_colour_12="#00f3ff"   # texto do estrado direito
+tmux_conf_theme_colour_13="#e0e0ff"   # cinza claro (texto)
+tmux_conf_theme_colour_14="#08090a"   # fundo derradeiro do estrado direito
+tmux_conf_theme_colour_15="#08090a"   # fundo basilar do estrado
+tmux_conf_theme_colour_16="#ff003c"   # vermelho de alarme
+tmux_conf_theme_colour_17="#00f3ff"   # cyano derradeiro
 
-# -- window style --------------------------------------------------------------
+# ─── DO ESTYLO DA JANELLA ───
 tmux_conf_theme_window_fg="default"
 tmux_conf_theme_window_bg="default"
 
-# -- pane borders --------------------------------------------------------------
+# ─── DAS ORLAS DOS PAINEIS ───
 tmux_conf_theme_highlight_focused_pane=true
 tmux_conf_theme_focused_pane_bg="default"
 
@@ -82,7 +94,7 @@ tmux_conf_theme_pane_active_border="#{?pane_in_mode,$tmux_conf_theme_colour_5,#{
 tmux_conf_theme_pane_indicator="$tmux_conf_theme_colour_4"
 tmux_conf_theme_pane_active_indicator="$tmux_conf_theme_colour_5"
 
-# -- message / command bar -----------------------------------------------------
+# ─── DO ESTRADO DAS MENSAGENS E COMMANDOS ───
 tmux_conf_theme_message_fg="$tmux_conf_theme_colour_1"
 tmux_conf_theme_message_bg="$tmux_conf_theme_colour_5"
 tmux_conf_theme_message_attr="bold"
@@ -95,16 +107,16 @@ tmux_conf_theme_mode_fg="$tmux_conf_theme_colour_1"
 tmux_conf_theme_mode_bg="$tmux_conf_theme_colour_5"
 tmux_conf_theme_mode_attr="bold"
 
-# -- status line base style ----------------------------------------------------
+# ─── DO ESTYLO BASILAR DO ESTRADO ───
 tmux_conf_theme_status_fg="$tmux_conf_theme_colour_3"
 tmux_conf_theme_status_bg="default"
 tmux_conf_theme_status_attr="none"
 
 
-# -- terminal title ------------------------------------------------------------
+# ─── DO TITULO DO TERMINAL ───
 tmux_conf_theme_terminal_title="⬡ #S ▸ #W"
 
-# -- window tab style ----------------------------------------------------------
+# ─── DO ESTYLO DAS ABAS (REPRISE) ───
 tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
 tmux_conf_theme_window_status_bg="$tmux_conf_theme_colour_2"
 tmux_conf_theme_window_status_attr="none"
@@ -128,56 +140,56 @@ tmux_conf_theme_window_status_last_bg="$tmux_conf_theme_colour_2"
 tmux_conf_theme_window_status_last_attr="none"
 
 
-# -- Powerline separators ------------------------------------------------------
+# ─── DOS SEPARADORES POWERLINE ───
 tmux_conf_theme_left_separator_main='\uE0B0'
 tmux_conf_theme_left_separator_sub='\uE0B1'
 tmux_conf_theme_right_separator_main='\uE0B2'
 tmux_conf_theme_right_separator_sub='\uE0B3'
 
-# -- CONFIGURAÇÃO DO PAINEL ESQUERDO (RADAR DE SESSÃO) -------------------------
+# ─── DO PAINEL ESQUERDO (O RADAR DA SESSÃO) ───
 
-# A string de dados permanece inalterada, mantendo a integridade da arma ASCII
+# ESCHOLIO. A cadeia de dados permanece inalterada, preservada a integridade da arma em caracteres ASCII.
 #tmux_conf_theme_status_left=" ⚑ ⩜ (う-´)▄︻デ═══一*++ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
 
-# -- CONSTANTES TERMÓNICAS (PALETA CIBERNÉTICA EXPANDIDA) -----------------------
-# Adicionamos o isótopo de Âmbar para o espectro do Uptime
+# ─── DAS CONSTANTES THERMONICAS (A PALETA CYBERNETICA EXPANDIDA) ───
+# Adjunta-se o isótopo de Âmbar ao espectro do tempo de vida (uptime).
 tmux_conf_theme_colour_18="#ff8c00"    # Laranja de Sódio (Uptime)
 
-# -- CONFIGURAÇÃO DO RADAR ESQUERDO (STATUS LEFT) ------------------------------
-# Substituímos o fuzil estático pela função variável #{_rifle}
+# ─── DO RADAR ESQUERDO (STATUS LEFT) ───
+# Substitue-se o fuzil estatico pela funcção variavel #{_rifle}.
 tmux_conf_theme_status_left=" ⚑ ⩜ (う-´)▄︻デ═══一*++ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
 
-# Definição dos fotões de cor para o texto (Foreground)
-# 1. none: Permite que a função do fuzil controle a sua própria cor interna
-# 2. colour_18: O nosso Laranja Âmbar para o segundo segmento (Uptime)
+# Da definição dos fotões de côr do texto (fronte / foreground):
+#   i. "none": consente que a funcção do fuzil reja a sua propria côr interna;
+#   ii. "colour_18": o nosso Laranja Âmbar para o segundo segmento (uptime).
 # tmux_conf_theme_status_left_fg="none,$tmux_conf_theme_colour_18,$tmux_conf_theme_colour_8"
 
-# Aqui calculamos os vetores de cor frontal (Foreground)
-# O primeiro valor ($colour_6) aplica-se à Sessão. 
-# O SEGUNDO valor ($colour_18) aplica-se agora ao Uptime em LARANJA.
+# Calculam-se aqui os vectores de côr frontal (foreground):
+#   o primeiro valor ($colour_6) recahe sobre a Sessão;
+#   o segundo ($colour_18) recahe agora sobre o uptime, em côr de laranja.
 tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_18,$tmux_conf_theme_colour_8"
 
-# Aqui calculamos os vetores de fundo (Background)
-# Mantive o fundo do Uptime como Deep Void ($colour_1) para o laranja não sofrer interferência
+# Calculam-se os vectores de fundo (background):
+#   conserva-se o fundo do uptime como Vacuo Profundo ($colour_1), a fim de que o laranja não soffra interferencia.
 tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_1,$tmux_conf_theme_colour_11"
 
-# Atributos de renderização (Negrito para o primeiro segmento, normal para o uptime)
+# Attributos de renderização (negrito no primeiro segmento; normal no uptime).
 tmux_conf_theme_status_left_attr="bold,none,none"
-# -- status left ---------------------------------------------------------------
+# ─── DO ESTRADO ESQUERDO (VARIANTE ANTIGA, EM REPOUSO) ───
 #tmux_conf_theme_status_left=" ⚑ ⩜ (う-´)▄︻デ═══一*++ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
 #tmux_conf_theme:wq_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
 #tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
 #tmux_conf_theme_status_left_attr="bold,none,none"
 
 
-# -- status right --------------------------------------------------------------
+# ─── DO ESTRADO DIREITO ───
 tmux_conf_theme_status_right="#{prefix}#{mouse}#{pairing}#{synchronized} #{loadavg} | #{?battery_status,#{battery_status},}#{?battery_bar,#{battery_bar},}#{?battery_percentage, #{battery_percentage},} | RADICAL@BRAGA.USS "
 tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_12,$tmux_conf_theme_colour_13,$tmux_conf_theme_colour_14"
 tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_16,$tmux_conf_theme_colour_17"
 tmux_conf_theme_status_right_attr="none,none,bold"
 
 
-# -- indicators ----------------------------------------------------------------
+# ─── DOS INDICADORES ───
 tmux_conf_theme_pairing="⚇"
 tmux_conf_theme_pairing_fg="none"
 tmux_conf_theme_pairing_bg="none"
@@ -203,7 +215,7 @@ tmux_conf_theme_synchronized_fg="$tmux_conf_theme_colour_5"
 tmux_conf_theme_synchronized_bg="none"
 tmux_conf_theme_synchronized_attr="bold"
 
-# -- battery -------------------------------------------------------------------
+# ─── DA PILHA (BATERIA) ───
 tmux_conf_battery_bar_symbol_full="█"
 tmux_conf_battery_bar_symbol_empty="░"
 tmux_conf_battery_bar_length="auto"
@@ -213,13 +225,13 @@ tmux_conf_battery_vbar_palette="gradient"
 tmux_conf_battery_status_charging="⚡"
 tmux_conf_battery_status_discharging="▼"
 
-# -- clipboard -----------------------------------------------------------------
+# ─── DA TABOA DE TRANSCRIPÇÃO (CLIPBOARD) ───
 tmux_conf_copy_to_os_clipboard=false
 
-# -- urlscan -------------------------------------------------------------------
+# ─── DO ESQUADRINHAR DE ENDEREÇOS (urlscan) ───
 tmux_conf_urlscan_options="--compact --dedupe"
 
-# -- user customizations -------------------------------------------------------
+# ─── DAS CUSTOMIZAÇÕES DE LAVRA PROPRIA DO AUCTOR ───
 set -g history-limit 50000
 set -g mouse on
 
@@ -231,15 +243,21 @@ set-option -g status-position top
 unbind c
 bind c command-prompt -p "⚑ Nova sessão:" "new-session -c '#{pane_current_path}' -s '%%'"
 
-# -- tpm -----------------------------------------------------------------------
+# ─── DO GESTOR DE PLUGINS (tpm) ───
 tmux_conf_update_plugins_on_launch=true
 tmux_conf_update_plugins_on_reload=true
 tmux_conf_uninstall_plugins_on_reload=true
 
 bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "xclip -selection clipboard -in"
-# -- custom variables ----------------------------------------------------------
+# ─── DAS VARIAVEIS DE LAVRA PROPRIA ───
 
-# ------------------------------------------------------------------------------
+# ─── EPILOGO ──────────────────────────────────────────────────────────────────
+#   Assim se ornou o estrado e se fixaram as côres d'este engenho. Se a
+#   tela destoar do preceito, culpe-se o phosphoro do monitor, e jámais a
+#   geometria das côres, que é exacta.
+#
+#                                             Quod Erat Demonstrandum.
+# ────────────────────────────────────────────────────────────────────────────
 
 # # /!\ do not remove the following line
 # EOF
