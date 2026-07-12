@@ -10,6 +10,10 @@
 set -g status-position top
 set -g default-terminal "tmux-256color"
 set -as terminal-overrides ',xterm-256color:RGB'
+set -g allow-passthrough on
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
+set -g status-position top
 
 # -- window tab style ----------------------------------------------------------
 tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
@@ -66,7 +70,7 @@ tmux_conf_theme_window_bg="default"
 
 # -- pane borders --------------------------------------------------------------
 tmux_conf_theme_highlight_focused_pane=true
-tmux_conf_theme_focused_pane_bg="$tmux_conf_theme_colour_2"
+tmux_conf_theme_focused_pane_bg="default"
 
 tmux_conf_theme_pane_border_style=thin
 tmux_conf_theme_pane_border="$tmux_conf_theme_colour_3"
@@ -93,13 +97,12 @@ tmux_conf_theme_mode_attr="bold"
 
 # -- status line base style ----------------------------------------------------
 tmux_conf_theme_status_fg="$tmux_conf_theme_colour_3"
-tmux_conf_theme_status_bg="$tmux_conf_theme_colour_1"
+tmux_conf_theme_status_bg="default"
 tmux_conf_theme_status_attr="none"
 
 
 # -- terminal title ------------------------------------------------------------
 tmux_conf_theme_terminal_title="⬡ #S ▸ #W"
-
 
 # -- window tab style ----------------------------------------------------------
 tmux_conf_theme_window_status_fg="$tmux_conf_theme_colour_3"
@@ -131,12 +134,40 @@ tmux_conf_theme_left_separator_sub='\uE0B1'
 tmux_conf_theme_right_separator_main='\uE0B2'
 tmux_conf_theme_right_separator_sub='\uE0B3'
 
+# -- CONFIGURAÇÃO DO PAINEL ESQUERDO (RADAR DE SESSÃO) -------------------------
 
-# -- status left ---------------------------------------------------------------
+# A string de dados permanece inalterada, mantendo a integridade da arma ASCII
+#tmux_conf_theme_status_left=" ⚑ ⩜ (う-´)▄︻デ═══一*++ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
+
+# -- CONSTANTES TERMÓNICAS (PALETA CIBERNÉTICA EXPANDIDA) -----------------------
+# Adicionamos o isótopo de Âmbar para o espectro do Uptime
+tmux_conf_theme_colour_18="#ff8c00"    # Laranja de Sódio (Uptime)
+
+# -- CONFIGURAÇÃO DO RADAR ESQUERDO (STATUS LEFT) ------------------------------
+# Substituímos o fuzil estático pela função variável #{_rifle}
 tmux_conf_theme_status_left=" ⚑ ⩜ (う-´)▄︻デ═══一*++ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
-tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
+
+# Definição dos fotões de cor para o texto (Foreground)
+# 1. none: Permite que a função do fuzil controle a sua própria cor interna
+# 2. colour_18: O nosso Laranja Âmbar para o segundo segmento (Uptime)
+# tmux_conf_theme_status_left_fg="none,$tmux_conf_theme_colour_18,$tmux_conf_theme_colour_8"
+
+# Aqui calculamos os vetores de cor frontal (Foreground)
+# O primeiro valor ($colour_6) aplica-se à Sessão. 
+# O SEGUNDO valor ($colour_18) aplica-se agora ao Uptime em LARANJA.
+tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_18,$tmux_conf_theme_colour_8"
+
+# Aqui calculamos os vetores de fundo (Background)
+# Mantive o fundo do Uptime como Deep Void ($colour_1) para o laranja não sofrer interferência
+tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_1,$tmux_conf_theme_colour_11"
+
+# Atributos de renderização (Negrito para o primeiro segmento, normal para o uptime)
 tmux_conf_theme_status_left_attr="bold,none,none"
+# -- status left ---------------------------------------------------------------
+#tmux_conf_theme_status_left=" ⚑ ⩜ (う-´)▄︻デ═══一*++ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
+#tmux_conf_theme:wq_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_7,$tmux_conf_theme_colour_8"
+#tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_9,$tmux_conf_theme_colour_10,$tmux_conf_theme_colour_11"
+#tmux_conf_theme_status_left_attr="bold,none,none"
 
 
 # -- status right --------------------------------------------------------------
@@ -172,7 +203,6 @@ tmux_conf_theme_synchronized_fg="$tmux_conf_theme_colour_5"
 tmux_conf_theme_synchronized_bg="none"
 tmux_conf_theme_synchronized_attr="bold"
 
-
 # -- battery -------------------------------------------------------------------
 tmux_conf_battery_bar_symbol_full="█"
 tmux_conf_battery_bar_symbol_empty="░"
@@ -206,18 +236,10 @@ tmux_conf_update_plugins_on_launch=true
 tmux_conf_update_plugins_on_reload=true
 tmux_conf_uninstall_plugins_on_reload=true
 
+bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "xclip -selection clipboard -in"
 # -- custom variables ----------------------------------------------------------
 
 # ------------------------------------------------------------------------------
 
 # # /!\ do not remove the following line
 # EOF
-#
-# # usage: #{online}
-# online() {
-#   ping -c 1 1.1.1.1 >/dev/null 2>&1 && printf '⬡ ONLINE' || printf '⬡ OFFLINE'
-# }
-#
-# # usage: #{weather}
-# weather() {
-#   curl -f -s -m 2 'wttr.in?format=3' || printf '\n'
